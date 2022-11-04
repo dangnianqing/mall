@@ -1,0 +1,21 @@
+
+spring:
+  redis:
+    host: 42.192.133.13
+    port: 6379
+  datasource:
+    url: jdbc:mysql://42.192.133.13:3306/ennovation
+    username: root
+    password: rootroot
+  cloud:
+    nacos:
+      server-addr: 42.192.133.13:8848
+      discovery:
+        namespace: 3eb6af1c-911e-46b8-aadf-f51611b3ee91
+        username: nacos
+        password: nacos
+  application:
+    name: mall-product
+
+server:
+    port: 8082
