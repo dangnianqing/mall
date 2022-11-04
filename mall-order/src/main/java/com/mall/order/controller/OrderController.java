@@ -1,8 +1,8 @@
 package com.mall.order.controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.mall.order.feign.ProductFeign;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author ：zhanghaijun
@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/order")
 public class OrderController {
+    @Autowired
+    private ProductFeign productFeign;
 
-    @PostMapping("/find")
+    @GetMapping("/find")
     public String find() {
-        return "product";
+        return productFeign.getProduct();
     }
 }
