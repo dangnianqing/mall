@@ -1,4 +1,4 @@
-package com.mall.order.feign;
+package com.mall.feign.product;
 
 
 import org.springframework.cloud.openfeign.FeignClient;

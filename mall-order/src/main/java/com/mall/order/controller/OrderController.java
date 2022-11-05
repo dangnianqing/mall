@@ -1,6 +1,6 @@
 package com.mall.order.controller;
 
-import com.mall.order.feign.ProductFeign;
+import com.mall.feign.product.ProductFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

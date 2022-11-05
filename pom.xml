@@ -3,6 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <modules>
+        <module>mall-common</module>
+        <module>mall-feign</module>
         <module>mall-product</module>
         <module>mall-order</module>
     </modules>
@@ -11,6 +13,10 @@
         <springboot.version>2.6.13</springboot.version>
         <springcloud.version>2021.0.4</springcloud.version>
         <springcloudalibaba.version>2021.0.4.0</springcloudalibaba.version>
+        <mall-product.version>1.0.0</mall-product.version>
+        <mall-order.version>1.0.0</mall-order.version>
+        <mall-feign.version>1.0.0</mall-feign.version>
+        <mall-common.version>1.0.0</mall-common.version>
     </properties>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -85,21 +91,6 @@
     </dependencies>
 
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+
 
 </project>
