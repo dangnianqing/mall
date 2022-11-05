@@ -4,8 +4,9 @@ import com.mall.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.concurrent.locks.Lock;
 
 /**
  * @Author ：zhanghaijun
@@ -19,9 +20,7 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping("/find")
-    public Object find() {
-        int a=111;
-        System.out.println(a);
-        return productService.selectPage(1,10,null);
+    public Boolean find() {
+        return productService.updateLock("1");
     }
 }
