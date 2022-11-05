@@ -1,0 +1,866 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mall.product.mapper.ProductMapper">
+    <resultMap id="BaseResultMap" type="com.mall.product.entity.Product">
+        <!--@mbg.generated-->
+        <!--@Table product-->
+        <id column="ID" jdbcType="CHAR" property="id"/>
+        <result column="PRODUCT_NUMBER" jdbcType="VARCHAR" property="productNumber"/>
+        <result column="PRODUCT_NAME" jdbcType="VARCHAR" property="productName"/>
+        <result column="CATEGORY_CLASS_1" jdbcType="VARCHAR" property="categoryClass1"/>
+        <result column="CATEGORY_CLASS_2" jdbcType="VARCHAR" property="categoryClass2"/>
+        <result column="CATEGORY_CLASS_3" jdbcType="VARCHAR" property="categoryClass3"/>
+        <result column="CATEGORY_CLASS_4" jdbcType="VARCHAR" property="categoryClass4"/>
+        <result column="YEAR_CODE" jdbcType="VARCHAR" property="yearCode"/>
+        <result column="SEASON_CODE" jdbcType="VARCHAR" property="seasonCode"/>
+        <result column="TRADEMARK_CODE" jdbcType="VARCHAR" property="trademarkCode"/>
+        <result column="TRADEMARK_NAME" jdbcType="VARCHAR" property="trademarkName"/>
+        <result column="SUPPLIER_CODE" jdbcType="VARCHAR" property="supplierCode"/>
+        <result column="SUPPLIER_NAME" jdbcType="VARCHAR" property="supplierName"/>
+        <result column="ISVALID" jdbcType="VARCHAR" property="isvalid"/>
+        <result column="SAP_DATE_UPDATED" jdbcType="VARCHAR" property="sapDateUpdated"/>
+        <result column="REMARK1" jdbcType="VARCHAR" property="remark1"/>
+        <result column="REMARK2" jdbcType="VARCHAR" property="remark2"/>
+        <result column="REMARK3" jdbcType="VARCHAR" property="remark3"/>
+        <result column="REMARK4" jdbcType="VARCHAR" property="remark4"/>
+        <result column="REMARK5" jdbcType="VARCHAR" property="remark5"/>
+        <result column="REMARK6" jdbcType="VARCHAR" property="remark6"/>
+        <result column="REMARK7" jdbcType="VARCHAR" property="remark7"/>
+        <result column="REMARK8" jdbcType="VARCHAR" property="remark8"/>
+        <result column="REMARK9" jdbcType="VARCHAR" property="remark9"/>
+        <result column="REMARK10" jdbcType="VARCHAR" property="remark10"/>
+        <result column="DATE_CREATED" jdbcType="TIMESTAMP" property="dateCreated"/>
+        <result column="CREATED_BY" jdbcType="VARCHAR" property="createdBy"/>
+        <result column="UPDATED_BY" jdbcType="VARCHAR" property="updatedBy"/>
+        <result column="DATE_UPDATED" jdbcType="TIMESTAMP" property="dateUpdated"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        ID,
+        PRODUCT_NUMBER,
+        PRODUCT_NAME,
+        CATEGORY_CLASS_1,
+        CATEGORY_CLASS_2,
+        CATEGORY_CLASS_3,
+        CATEGORY_CLASS_4,
+        YEAR_CODE,
+        SEASON_CODE,
+        TRADEMARK_CODE,
+        TRADEMARK_NAME,
+        SUPPLIER_CODE,
+        SUPPLIER_NAME,
+        ISVALID,
+        SAP_DATE_UPDATED,
+        REMARK1,
+        REMARK2,
+        REMARK3,
+        REMARK4,
+        REMARK5,
+        REMARK6,
+        REMARK7,
+        REMARK8,
+        REMARK9,
+        REMARK10,
+        DATE_CREATED,
+        CREATED_BY,
+        UPDATED_BY,
+        DATE_UPDATED
+    </sql>
+    <select id="selectById" parameterType="java.lang.String" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from product
+        where ID = #{id,jdbcType=CHAR}
+    </select>
+    <delete id="deleteById" parameterType="java.lang.String">
+        <!--@mbg.generated-->
+        delete
+        from product
+        where ID = #{id,jdbcType=CHAR}
+    </delete>
+    <insert id="insert" parameterType="com.mall.product.entity.Product">
+        <!--@mbg.generated-->
+        insert into product
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="productNumber != null">
+                PRODUCT_NUMBER,
+            </if>
+            <if test="productName != null">
+                PRODUCT_NAME,
+            </if>
+            <if test="categoryClass1 != null">
+                CATEGORY_CLASS_1,
+            </if>
+            <if test="categoryClass2 != null">
+                CATEGORY_CLASS_2,
+            </if>
+            <if test="categoryClass3 != null">
+                CATEGORY_CLASS_3,
+            </if>
+            <if test="categoryClass4 != null">
+                CATEGORY_CLASS_4,
+            </if>
+            <if test="yearCode != null">
+                YEAR_CODE,
+            </if>
+            <if test="seasonCode != null">
+                SEASON_CODE,
+            </if>
+            <if test="trademarkCode != null">
+                TRADEMARK_CODE,
+            </if>
+            <if test="trademarkName != null">
+                TRADEMARK_NAME,
+            </if>
+            <if test="supplierCode != null">
+                SUPPLIER_CODE,
+            </if>
+            <if test="supplierName != null">
+                SUPPLIER_NAME,
+            </if>
+            <if test="isvalid != null">
+                ISVALID,
+            </if>
+            <if test="sapDateUpdated != null">
+                SAP_DATE_UPDATED,
+            </if>
+            <if test="remark1 != null">
+                REMARK1,
+            </if>
+            <if test="remark2 != null">
+                REMARK2,
+            </if>
+            <if test="remark3 != null">
+                REMARK3,
+            </if>
+            <if test="remark4 != null">
+                REMARK4,
+            </if>
+            <if test="remark5 != null">
+                REMARK5,
+            </if>
+            <if test="remark6 != null">
+                REMARK6,
+            </if>
+            <if test="remark7 != null">
+                REMARK7,
+            </if>
+            <if test="remark8 != null">
+                REMARK8,
+            </if>
+            <if test="remark9 != null">
+                REMARK9,
+            </if>
+            <if test="remark10 != null">
+                REMARK10,
+            </if>
+            <if test="dateCreated != null">
+                DATE_CREATED,
+            </if>
+            <if test="createdBy != null">
+                CREATED_BY,
+            </if>
+            <if test="updatedBy != null">
+                UPDATED_BY,
+            </if>
+            <if test="dateUpdated != null">
+                DATE_UPDATED,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=CHAR},
+            </if>
+            <if test="productNumber != null">
+                #{productNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="productName != null">
+                #{productName,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryClass1 != null">
+                #{categoryClass1,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryClass2 != null">
+                #{categoryClass2,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryClass3 != null">
+                #{categoryClass3,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryClass4 != null">
+                #{categoryClass4,jdbcType=VARCHAR},
+            </if>
+            <if test="yearCode != null">
+                #{yearCode,jdbcType=VARCHAR},
+            </if>
+            <if test="seasonCode != null">
+                #{seasonCode,jdbcType=VARCHAR},
+            </if>
+            <if test="trademarkCode != null">
+                #{trademarkCode,jdbcType=VARCHAR},
+            </if>
+            <if test="trademarkName != null">
+                #{trademarkName,jdbcType=VARCHAR},
+            </if>
+            <if test="supplierCode != null">
+                #{supplierCode,jdbcType=VARCHAR},
+            </if>
+            <if test="supplierName != null">
+                #{supplierName,jdbcType=VARCHAR},
+            </if>
+            <if test="isvalid != null">
+                #{isvalid,jdbcType=VARCHAR},
+            </if>
+            <if test="sapDateUpdated != null">
+                #{sapDateUpdated,jdbcType=VARCHAR},
+            </if>
+            <if test="remark1 != null">
+                #{remark1,jdbcType=VARCHAR},
+            </if>
+            <if test="remark2 != null">
+                #{remark2,jdbcType=VARCHAR},
+            </if>
+            <if test="remark3 != null">
+                #{remark3,jdbcType=VARCHAR},
+            </if>
+            <if test="remark4 != null">
+                #{remark4,jdbcType=VARCHAR},
+            </if>
+            <if test="remark5 != null">
+                #{remark5,jdbcType=VARCHAR},
+            </if>
+            <if test="remark6 != null">
+                #{remark6,jdbcType=VARCHAR},
+            </if>
+            <if test="remark7 != null">
+                #{remark7,jdbcType=VARCHAR},
+            </if>
+            <if test="remark8 != null">
+                #{remark8,jdbcType=VARCHAR},
+            </if>
+            <if test="remark9 != null">
+                #{remark9,jdbcType=VARCHAR},
+            </if>
+            <if test="remark10 != null">
+                #{remark10,jdbcType=VARCHAR},
+            </if>
+            <if test="dateCreated != null">
+                #{dateCreated,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdBy != null">
+                #{createdBy,jdbcType=VARCHAR},
+            </if>
+            <if test="updatedBy != null">
+                #{updatedBy,jdbcType=VARCHAR},
+            </if>
+            <if test="dateUpdated != null">
+                #{dateUpdated,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="com.mall.product.entity.Product">
+        <!--@mbg.generated-->
+        update product
+        <set>
+            <if test="productNumber != null">
+                PRODUCT_NUMBER = #{productNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="productName != null">
+                PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryClass1 != null">
+                CATEGORY_CLASS_1 = #{categoryClass1,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryClass2 != null">
+                CATEGORY_CLASS_2 = #{categoryClass2,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryClass3 != null">
+                CATEGORY_CLASS_3 = #{categoryClass3,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryClass4 != null">
+                CATEGORY_CLASS_4 = #{categoryClass4,jdbcType=VARCHAR},
+            </if>
+            <if test="yearCode != null">
+                YEAR_CODE = #{yearCode,jdbcType=VARCHAR},
+            </if>
+            <if test="seasonCode != null">
+                SEASON_CODE = #{seasonCode,jdbcType=VARCHAR},
+            </if>
+            <if test="trademarkCode != null">
+                TRADEMARK_CODE = #{trademarkCode,jdbcType=VARCHAR},
+            </if>
+            <if test="trademarkName != null">
+                TRADEMARK_NAME = #{trademarkName,jdbcType=VARCHAR},
+            </if>
+            <if test="supplierCode != null">
+                SUPPLIER_CODE = #{supplierCode,jdbcType=VARCHAR},
+            </if>
+            <if test="supplierName != null">
+                SUPPLIER_NAME = #{supplierName,jdbcType=VARCHAR},
+            </if>
+            <if test="isvalid != null">
+                ISVALID = #{isvalid,jdbcType=VARCHAR},
+            </if>
+            <if test="sapDateUpdated != null">
+                SAP_DATE_UPDATED = #{sapDateUpdated,jdbcType=VARCHAR},
+            </if>
+            <if test="remark1 != null">
+                REMARK1 = #{remark1,jdbcType=VARCHAR},
+            </if>
+            <if test="remark2 != null">
+                REMARK2 = #{remark2,jdbcType=VARCHAR},
+            </if>
+            <if test="remark3 != null">
+                REMARK3 = #{remark3,jdbcType=VARCHAR},
+            </if>
+            <if test="remark4 != null">
+                REMARK4 = #{remark4,jdbcType=VARCHAR},
+            </if>
+            <if test="remark5 != null">
+                REMARK5 = #{remark5,jdbcType=VARCHAR},
+            </if>
+            <if test="remark6 != null">
+                REMARK6 = #{remark6,jdbcType=VARCHAR},
+            </if>
+            <if test="remark7 != null">
+                REMARK7 = #{remark7,jdbcType=VARCHAR},
+            </if>
+            <if test="remark8 != null">
+                REMARK8 = #{remark8,jdbcType=VARCHAR},
+            </if>
+            <if test="remark9 != null">
+                REMARK9 = #{remark9,jdbcType=VARCHAR},
+            </if>
+            <if test="remark10 != null">
+                REMARK10 = #{remark10,jdbcType=VARCHAR},
+            </if>
+            <if test="dateCreated != null">
+                DATE_CREATED = #{dateCreated,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdBy != null">
+                CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+            </if>
+            <if test="updatedBy != null">
+                UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+            </if>
+            <if test="dateUpdated != null">
+                DATE_UPDATED = #{dateUpdated,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=CHAR}
+    </update>
+    <update id="updateBatch" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update product
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="PRODUCT_NUMBER = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.productNumber != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.productNumber,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="PRODUCT_NAME = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.productName != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.productName,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="CATEGORY_CLASS_1 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.categoryClass1 != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.categoryClass1,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="CATEGORY_CLASS_2 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.categoryClass2 != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.categoryClass2,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="CATEGORY_CLASS_3 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.categoryClass3 != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.categoryClass3,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="CATEGORY_CLASS_4 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.categoryClass4 != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.categoryClass4,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="YEAR_CODE = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.yearCode != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.yearCode,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="SEASON_CODE = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.seasonCode != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.seasonCode,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="TRADEMARK_CODE = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.trademarkCode != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.trademarkCode,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="TRADEMARK_NAME = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.trademarkName != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.trademarkName,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="SUPPLIER_CODE = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.supplierCode != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.supplierCode,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="SUPPLIER_NAME = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.supplierName != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.supplierName,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="ISVALID = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.isvalid != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.isvalid,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="SAP_DATE_UPDATED = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.sapDateUpdated != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.sapDateUpdated,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="REMARK1 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.remark1 != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.remark1,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="REMARK2 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.remark2 != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.remark2,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="REMARK3 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.remark3 != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.remark3,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="REMARK4 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.remark4 != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.remark4,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="REMARK5 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.remark5 != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.remark5,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="REMARK6 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.remark6 != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.remark6,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="REMARK7 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.remark7 != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.remark7,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="REMARK8 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.remark8 != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.remark8,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="REMARK9 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.remark9 != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.remark9,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="REMARK10 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.remark10 != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.remark10,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="DATE_CREATED = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.dateCreated != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.dateCreated,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="CREATED_BY = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.createdBy != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.createdBy,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="UPDATED_BY = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.updatedBy != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.updatedBy,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="DATE_UPDATED = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.dateUpdated != null">
+                        when ID = #{item.id,jdbcType=CHAR} then #{item.dateUpdated,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        where ID in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=CHAR}
+        </foreach>
+    </update>
+    <insert id="insertBach" parameterType="map">
+        <!--@mbg.generated-->
+        insert into product
+        (ID, PRODUCT_NUMBER, PRODUCT_NAME, CATEGORY_CLASS_1, CATEGORY_CLASS_2, CATEGORY_CLASS_3,
+         CATEGORY_CLASS_4, YEAR_CODE, SEASON_CODE, TRADEMARK_CODE, TRADEMARK_NAME, SUPPLIER_CODE,
+         SUPPLIER_NAME, ISVALID, SAP_DATE_UPDATED, REMARK1, REMARK2, REMARK3, REMARK4, REMARK5,
+         REMARK6, REMARK7, REMARK8, REMARK9, REMARK10, DATE_CREATED, CREATED_BY, UPDATED_BY,
+         DATE_UPDATED)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id,jdbcType=CHAR}, #{item.productNumber,jdbcType=VARCHAR}, #{item.productName,jdbcType=VARCHAR},
+             #{item.categoryClass1,jdbcType=VARCHAR}, #{item.categoryClass2,jdbcType=VARCHAR},
+             #{item.categoryClass3,jdbcType=VARCHAR}, #{item.categoryClass4,jdbcType=VARCHAR},
+             #{item.yearCode,jdbcType=VARCHAR}, #{item.seasonCode,jdbcType=VARCHAR},
+             #{item.trademarkCode,jdbcType=VARCHAR},
+             #{item.trademarkName,jdbcType=VARCHAR}, #{item.supplierCode,jdbcType=VARCHAR},
+             #{item.supplierName,jdbcType=VARCHAR}, #{item.isvalid,jdbcType=VARCHAR},
+             #{item.sapDateUpdated,jdbcType=VARCHAR},
+             #{item.remark1,jdbcType=VARCHAR}, #{item.remark2,jdbcType=VARCHAR}, #{item.remark3,jdbcType=VARCHAR},
+             #{item.remark4,jdbcType=VARCHAR}, #{item.remark5,jdbcType=VARCHAR}, #{item.remark6,jdbcType=VARCHAR},
+             #{item.remark7,jdbcType=VARCHAR}, #{item.remark8,jdbcType=VARCHAR}, #{item.remark9,jdbcType=VARCHAR},
+             #{item.remark10,jdbcType=VARCHAR}, #{item.dateCreated,jdbcType=TIMESTAMP},
+             #{item.createdBy,jdbcType=VARCHAR},
+             #{item.updatedBy,jdbcType=VARCHAR}, #{item.dateUpdated,jdbcType=TIMESTAMP})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdate" parameterType="com.mall.product.entity.Product">
+        <!--@mbg.generated-->
+        insert into product
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="productNumber != null">
+                PRODUCT_NUMBER,
+            </if>
+            <if test="productName != null">
+                PRODUCT_NAME,
+            </if>
+            <if test="categoryClass1 != null">
+                CATEGORY_CLASS_1,
+            </if>
+            <if test="categoryClass2 != null">
+                CATEGORY_CLASS_2,
+            </if>
+            <if test="categoryClass3 != null">
+                CATEGORY_CLASS_3,
+            </if>
+            <if test="categoryClass4 != null">
+                CATEGORY_CLASS_4,
+            </if>
+            <if test="yearCode != null">
+                YEAR_CODE,
+            </if>
+            <if test="seasonCode != null">
+                SEASON_CODE,
+            </if>
+            <if test="trademarkCode != null">
+                TRADEMARK_CODE,
+            </if>
+            <if test="trademarkName != null">
+                TRADEMARK_NAME,
+            </if>
+            <if test="supplierCode != null">
+                SUPPLIER_CODE,
+            </if>
+            <if test="supplierName != null">
+                SUPPLIER_NAME,
+            </if>
+            <if test="isvalid != null">
+                ISVALID,
+            </if>
+            <if test="sapDateUpdated != null">
+                SAP_DATE_UPDATED,
+            </if>
+            <if test="remark1 != null">
+                REMARK1,
+            </if>
+            <if test="remark2 != null">
+                REMARK2,
+            </if>
+            <if test="remark3 != null">
+                REMARK3,
+            </if>
+            <if test="remark4 != null">
+                REMARK4,
+            </if>
+            <if test="remark5 != null">
+                REMARK5,
+            </if>
+            <if test="remark6 != null">
+                REMARK6,
+            </if>
+            <if test="remark7 != null">
+                REMARK7,
+            </if>
+            <if test="remark8 != null">
+                REMARK8,
+            </if>
+            <if test="remark9 != null">
+                REMARK9,
+            </if>
+            <if test="remark10 != null">
+                REMARK10,
+            </if>
+            <if test="dateCreated != null">
+                DATE_CREATED,
+            </if>
+            <if test="createdBy != null">
+                CREATED_BY,
+            </if>
+            <if test="updatedBy != null">
+                UPDATED_BY,
+            </if>
+            <if test="dateUpdated != null">
+                DATE_UPDATED,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=CHAR},
+            </if>
+            <if test="productNumber != null">
+                #{productNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="productName != null">
+                #{productName,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryClass1 != null">
+                #{categoryClass1,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryClass2 != null">
+                #{categoryClass2,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryClass3 != null">
+                #{categoryClass3,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryClass4 != null">
+                #{categoryClass4,jdbcType=VARCHAR},
+            </if>
+            <if test="yearCode != null">
+                #{yearCode,jdbcType=VARCHAR},
+            </if>
+            <if test="seasonCode != null">
+                #{seasonCode,jdbcType=VARCHAR},
+            </if>
+            <if test="trademarkCode != null">
+                #{trademarkCode,jdbcType=VARCHAR},
+            </if>
+            <if test="trademarkName != null">
+                #{trademarkName,jdbcType=VARCHAR},
+            </if>
+            <if test="supplierCode != null">
+                #{supplierCode,jdbcType=VARCHAR},
+            </if>
+            <if test="supplierName != null">
+                #{supplierName,jdbcType=VARCHAR},
+            </if>
+            <if test="isvalid != null">
+                #{isvalid,jdbcType=VARCHAR},
+            </if>
+            <if test="sapDateUpdated != null">
+                #{sapDateUpdated,jdbcType=VARCHAR},
+            </if>
+            <if test="remark1 != null">
+                #{remark1,jdbcType=VARCHAR},
+            </if>
+            <if test="remark2 != null">
+                #{remark2,jdbcType=VARCHAR},
+            </if>
+            <if test="remark3 != null">
+                #{remark3,jdbcType=VARCHAR},
+            </if>
+            <if test="remark4 != null">
+                #{remark4,jdbcType=VARCHAR},
+            </if>
+            <if test="remark5 != null">
+                #{remark5,jdbcType=VARCHAR},
+            </if>
+            <if test="remark6 != null">
+                #{remark6,jdbcType=VARCHAR},
+            </if>
+            <if test="remark7 != null">
+                #{remark7,jdbcType=VARCHAR},
+            </if>
+            <if test="remark8 != null">
+                #{remark8,jdbcType=VARCHAR},
+            </if>
+            <if test="remark9 != null">
+                #{remark9,jdbcType=VARCHAR},
+            </if>
+            <if test="remark10 != null">
+                #{remark10,jdbcType=VARCHAR},
+            </if>
+            <if test="dateCreated != null">
+                #{dateCreated,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdBy != null">
+                #{createdBy,jdbcType=VARCHAR},
+            </if>
+            <if test="updatedBy != null">
+                #{updatedBy,jdbcType=VARCHAR},
+            </if>
+            <if test="dateUpdated != null">
+                #{dateUpdated,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                ID = #{id,jdbcType=CHAR},
+            </if>
+            <if test="productNumber != null">
+                PRODUCT_NUMBER = #{productNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="productName != null">
+                PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryClass1 != null">
+                CATEGORY_CLASS_1 = #{categoryClass1,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryClass2 != null">
+                CATEGORY_CLASS_2 = #{categoryClass2,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryClass3 != null">
+                CATEGORY_CLASS_3 = #{categoryClass3,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryClass4 != null">
+                CATEGORY_CLASS_4 = #{categoryClass4,jdbcType=VARCHAR},
+            </if>
+            <if test="yearCode != null">
+                YEAR_CODE = #{yearCode,jdbcType=VARCHAR},
+            </if>
+            <if test="seasonCode != null">
+                SEASON_CODE = #{seasonCode,jdbcType=VARCHAR},
+            </if>
+            <if test="trademarkCode != null">
+                TRADEMARK_CODE = #{trademarkCode,jdbcType=VARCHAR},
+            </if>
+            <if test="trademarkName != null">
+                TRADEMARK_NAME = #{trademarkName,jdbcType=VARCHAR},
+            </if>
+            <if test="supplierCode != null">
+                SUPPLIER_CODE = #{supplierCode,jdbcType=VARCHAR},
+            </if>
+            <if test="supplierName != null">
+                SUPPLIER_NAME = #{supplierName,jdbcType=VARCHAR},
+            </if>
+            <if test="isvalid != null">
+                ISVALID = #{isvalid,jdbcType=VARCHAR},
+            </if>
+            <if test="sapDateUpdated != null">
+                SAP_DATE_UPDATED = #{sapDateUpdated,jdbcType=VARCHAR},
+            </if>
+            <if test="remark1 != null">
+                REMARK1 = #{remark1,jdbcType=VARCHAR},
+            </if>
+            <if test="remark2 != null">
+                REMARK2 = #{remark2,jdbcType=VARCHAR},
+            </if>
+            <if test="remark3 != null">
+                REMARK3 = #{remark3,jdbcType=VARCHAR},
+            </if>
+            <if test="remark4 != null">
+                REMARK4 = #{remark4,jdbcType=VARCHAR},
+            </if>
+            <if test="remark5 != null">
+                REMARK5 = #{remark5,jdbcType=VARCHAR},
+            </if>
+            <if test="remark6 != null">
+                REMARK6 = #{remark6,jdbcType=VARCHAR},
+            </if>
+            <if test="remark7 != null">
+                REMARK7 = #{remark7,jdbcType=VARCHAR},
+            </if>
+            <if test="remark8 != null">
+                REMARK8 = #{remark8,jdbcType=VARCHAR},
+            </if>
+            <if test="remark9 != null">
+                REMARK9 = #{remark9,jdbcType=VARCHAR},
+            </if>
+            <if test="remark10 != null">
+                REMARK10 = #{remark10,jdbcType=VARCHAR},
+            </if>
+            <if test="dateCreated != null">
+                DATE_CREATED = #{dateCreated,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdBy != null">
+                CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+            </if>
+            <if test="updatedBy != null">
+                UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+            </if>
+            <if test="dateUpdated != null">
+                DATE_UPDATED = #{dateUpdated,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <select id="selectPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from product
+    </select>
+</mapper>
