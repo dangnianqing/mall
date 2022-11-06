@@ -4,6 +4,7 @@ import com.mall.common.service.impl.IServiceImpl;
 import com.mall.common.utils.RedisLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -18,7 +19,7 @@ import com.mall.product.service.ProductService;
 public class ProductServiceImpl extends IServiceImpl<ProductMapper, Product> implements ProductService {
 
     @Autowired
-    private RedisTemplate<String,String> redisTemplate;
+    private StringRedisTemplate redisTemplate;
 
     @Override
     public Boolean updateLock(String s) {
@@ -26,19 +27,27 @@ public class ProductServiceImpl extends IServiceImpl<ProductMapper, Product> imp
         Integer yearCode = Integer.valueOf(product.getYearCode());
         String uuid = UUID.randomUUID().toString();
         RedisLock redisLock = new RedisLock(redisTemplate, product.getId(), uuid);
-        try {
-            if (redisLock.lock()) {
-                if (yearCode > 2000) {
+
+        if (redisLock.lock()) {
+            if (Integer.valueOf(product.getYearCode()) > 2000) {
+                Thread thread = redisLock.setExpireTime();
+                thread.setDaemon(true);
+                thread.start();
+                try {
                     product.setYearCode(String.valueOf(yearCode - 1));
                     this.update(product);
-                    return true;
+                    redisLock.unLock();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    thread.interrupt();
+                    redisLock.unLock();
                 }
             }
-        } catch (Exception e) {
-            redisLock.unLock();
-        } finally {
-            redisLock.unLock();
+
         }
+
+
         return false;
     }
 }
