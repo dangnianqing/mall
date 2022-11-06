@@ -62,7 +62,7 @@ public class RedisLock {
     private static final String SCRIPT_LOCK = "if redis.call('setnx', KEYS[1], ARGV[1]) == 1 then redis.call('expire', KEYS[1], ARGV[2]) return 1 else return 0 end";
 
     public boolean lock() {
-        while (timeOut > 0) {
+        while (true) {
             DefaultRedisScript<Long> defaultRedisScript = new DefaultRedisScript<>(SCRIPT_LOCK, Long.class);
             Long object = redisTemplate.execute(defaultRedisScript, Collections.singletonList(lockKey), requestId, String.valueOf(expireTime));
             log.info("获取锁的结果:{}", object);
@@ -71,7 +71,7 @@ public class RedisLock {
             }
             timeOut -= DEFAULT_ACQUIRT_RESOLUTION_MILLIS;
         }
-        return false;
+        //return false;
     }
 
     private static final String SCRIPT_SET_EXPIRE = "if redis.call('get', KEYS[1] ) == ARGV[1] then return redis.call('expire', KEYS[1], ARGV[2]) else return 0 end";
@@ -79,7 +79,8 @@ public class RedisLock {
     public Thread setExpireTime() {
         return new Thread(() -> {
             while (waitExpireTime >= 0) {
-                if (redisTemplate.opsForValue().get(lockKey) != null && redisTemplate.opsForValue().get(lockKey).equals(requestId)) {
+                String id = redisTemplate.opsForValue().get(lockKey);
+                if (id != null && id.equals(requestId)) {
                     log.info(lockKey + "续期中——————————————————————————————————————————");
                     DefaultRedisScript<Long> script = new DefaultRedisScript<>(SCRIPT_SET_EXPIRE, Long.class);
                     Long aLong = redisTemplate.execute(script, Collections.singletonList(lockKey), requestId, String.valueOf(expireTime));
