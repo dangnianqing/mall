@@ -2,6 +2,7 @@ package com.mall.product.service.impl;
 
 import com.mall.common.service.impl.IServiceImpl;
 import com.mall.common.utils.RedisLock;
+import com.mall.product.excel.ProductExcel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -49,5 +50,10 @@ public class ProductServiceImpl extends IServiceImpl<ProductMapper, Product> imp
 
 
         return false;
+    }
+
+    @Override
+    public List<ProductExcel> selectExcel() {
+        return baseMapper.selectExcel();
     }
 }

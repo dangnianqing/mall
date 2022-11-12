@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class IServiceImpl<M extends IMapper<T>, T> implements IService<T> {
     @Resource
-    private M baseMapper;
+    protected M baseMapper;
 
     @Override
     public T selectById(String id) {

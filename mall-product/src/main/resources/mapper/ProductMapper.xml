@@ -863,4 +863,8 @@
         <include refid="Base_Column_List"/>
         from product
     </select>
+
+    <select id="selectExcel" resultType="com.mall.product.excel.ProductExcel">
+        select <include refid="Base_Column_List" /> from product limit 1,50
+    </select>
 </mapper>
